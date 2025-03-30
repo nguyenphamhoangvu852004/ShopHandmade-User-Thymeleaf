@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,6 @@ public class ProductsController {
 
         return "product";
     }
-
     @GetMapping("/products/detail/{id}")
     public String detailProductView(@PathVariable("id") int id, Model model) {
         GetDetailProductResponse detailProductResponse = this.productService.getProductById(id);
