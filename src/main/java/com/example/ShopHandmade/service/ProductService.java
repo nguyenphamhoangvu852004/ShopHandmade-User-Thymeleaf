@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.ShopHandmade.model.PageWrapper;
+import com.example.ShopHandmade.service.response.GetDetailProductResponse;
+import com.example.ShopHandmade.service.response.GetProductResponse;
 
 @Service
 public class ProductService {

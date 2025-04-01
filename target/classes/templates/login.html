@@ -4,20 +4,22 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Title</title>
+  <title>Login</title>
 </head>
 
 <body>
   <div layout:fragment="main-content">
     <div class="container mt-3 mb-3 p-3" style="width: 400px; border-radius: 15px; border: black solid 1px">
-      <form th:action="@{/processLogin}" method="post">
+      <form th:action="@{/processLogin}" method="post" th:object="${loginRequest}">
         <div class="mb-3 mt-3" method="post">
           <label for="email" class="form-label">Email:</label>
           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" />
+          <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
           <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" />
+          <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
         </div>
         <!--    <div class="form-check mb-3">-->
         <!--      <label class="form-check-label">-->

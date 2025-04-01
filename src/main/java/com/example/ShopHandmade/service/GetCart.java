@@ -1,5 +1,7 @@
 package com.example.ShopHandmade.service;
 
+import com.example.ShopHandmade.service.response.GetDetailProductResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

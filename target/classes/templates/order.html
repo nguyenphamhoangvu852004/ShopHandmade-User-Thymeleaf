@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{default/layout}">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+  <title>Đơn hàng</title>
+</head>
+
+<body>
+  <div layout:fragment="main-content" class="container mt-4">
+    <h2>Danh sách đơn hàng</h2>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Mã đơn hàng</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Ngày đặt</th>
+          <th scope="col">Tổng tiền</th>
+          <th scope="col">Sản phẩm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="order : ${orders}">
+          <td th:text="${order.id}"></td>
+          <td th:text="${order.status}"></td>
+          <td th:text="${order.orderDate}"></td>
+          <td th:text="${order.totalAmount}"></td>
+          <td>
+            <ul class="list-unstyled">
+              <li th:each="item : ${order.listOrderItems}">
+                <span th:text="${item.product.name}"></span> -
+                <span th:text="${item.quantity}"></span> x
+                <span th:text="${item.product.price}"></span> VND
+                <br>
+                <img th:src="${item.product.images[0].src}" width="100" />
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

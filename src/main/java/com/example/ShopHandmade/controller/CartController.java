@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
-import com.example.ShopHandmade.service.AddToCardRequest;
 import com.example.ShopHandmade.service.GetCart;
-import com.example.ShopHandmade.service.GetDetailProductResponse;
 import com.example.ShopHandmade.service.ProductService;
+import com.example.ShopHandmade.service.request.AddToCardRequest;
+import com.example.ShopHandmade.service.response.GetDetailProductResponse;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -32,6 +32,7 @@ public class CartController {
     @GetMapping("/carts")
     public String getCartView(HttpSession httpSession, Model model) {
         List<AddToCardRequest> list = (List<AddToCardRequest>) httpSession.getAttribute("cart");
+        String address = "";
 
         if (list == null) {
             list = new ArrayList<>();
@@ -50,13 +51,13 @@ public class CartController {
             }
         }
 
-        for (GetCart cart : listCart) {
-            System.out.println("PRODUCT = " + cart.getProduct().toString() + ", Số lượng = " + cart.getQuantity());
-        }
+        // for (GetCart cart : listCart) {
+        // System.out.println("PRODUCT = " + cart.getProduct().toString() + ", Số lượng
+        // = " + cart.getQuantity());
+        // }
 
-        // ✅ Đảm bảo `cart` không bị null
         model.addAttribute("cart", listCart != null ? listCart : new ArrayList<>());
-
+        model.addAttribute("address", address);
         return "cart";
     }
 

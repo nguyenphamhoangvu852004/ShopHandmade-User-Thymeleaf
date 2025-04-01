@@ -1,9 +1,9 @@
 package com.example.ShopHandmade.controller;
 
 import com.example.ShopHandmade.service.CategoryService;
-import com.example.ShopHandmade.service.GetDetailProductResponse;
 import com.example.ShopHandmade.service.ProductService;
 import com.example.ShopHandmade.service.CategoryService.CategoryDTO;
+import com.example.ShopHandmade.service.response.GetDetailProductResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +46,7 @@ public class ProductsController {
 
         model.addAttribute("categories", listCategories);
         model.addAttribute("products", listProducts);
-        model.addAttribute("selectedCategory", categoryId); // Lưu ID danh mục đang chọn
+        // model.addAttribute("selectedCategory", categoryId); // Lưu ID danh mục đang chọn
 
         return "product";
     }
